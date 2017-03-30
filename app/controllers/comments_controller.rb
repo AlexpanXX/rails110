@@ -29,16 +29,21 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update(comment_params)
-      redirect_to movie_path(@movie), notice: "Comment Updated."
+      redirect_to account_comments_path, notice: "Comment Updated."
     else
       render :edit
     end
   end
 
+  def destroy
+    @comment.destroy
+    redirect_to account_comments_path, alert: "Comment deleted."
+  end
+
   private
 
   def find_comment_and_check_permission
-    @comment = Commnet.find(params[:id])
+    @comment = Comment.find(params[:id])
     if current_user != @comment.user
       redirect_to root_path, alert: "You have no permission."
     end

@@ -1,0 +1,25 @@
+<div class="col-md-12">
+  <h2 class="text-center">我发表的评论</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>评论内容</th>
+        <th>电影名称</th>
+        <th>发表时间</th>
+        <th colspan="2"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= comment.content %></td>
+          <td><%= comment.movie.title %></td>
+          <td><%= comment.created_at %></td>
+          <td><%= link_to("Edit", edit_movie_comment_path(comment.movie, comment), class: "btn btn-default btn-xs")%></td>
+          <td><%= link_to("Delete", movie_comment_path(comment.movie, comment), class: "btn btn-default btn-xs", method: :delete, data: { confirm: "Are you sure?"} )%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

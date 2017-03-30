@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <h2 class="text-center">我收藏的电影</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Comment Count</th>
+        <th>Last Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @movies.each do |movie| %>
+        <tr>
+          <td><%= movie.title %></td>
+          <td><%= render_movie_description(movie) %></td>
+          <td><%= movie.comments.count %></td>
+          <td><%= movie.updated_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
