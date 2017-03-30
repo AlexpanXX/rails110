@@ -31,9 +31,9 @@
     <tbody>
       <% @comments.each do |comment| %>
         <tr>
-          <td><%= commnet.content %></td>
-          <td><%= commnet.movie %></td>
-          <td><%= commnet.created_at %></td>
+          <td><%= comment.content %></td>
+          <td><%= comment.user.email %></td>
+          <td><%= comment.created_at %></td>
         </tr>
       <% end %>
     </tbody>

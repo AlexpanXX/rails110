@@ -43,4 +43,8 @@ class CommentsController < ApplicationController
       redirect_to root_path, alert: "You have no permission."
     end
   end
+
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
 end
