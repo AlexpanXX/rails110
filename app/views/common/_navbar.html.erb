@@ -15,6 +15,9 @@
             </a>
             <b class="caret"></b>
             <ul class="dropdown-menu">
+              <li><%= link_to("Favorited Movies", account_movies_path) %></li>
+              <li><%= link_to("My Comments", account_comments_path) %></li>
+              <li class="divider"></li>
               <li><%= link_to("退出", destroy_user_session_path, method: :delete) %></li>
             </ul>
           </li>
