@@ -4,7 +4,7 @@
     <% if current_user.is_follower_of?(@movie) %>
       <label class="label label-success"> 已收藏电影 </label>
       <%= link_to("Dislikes", dislikes_movie_path(@movie), class: "btn btn-default", method: :post) %>
-      <%= link_to("New Comment", new_movie_comment_path(@movie), class: "btn btn-default pull-right") %>
+      <%= link_to("Write a Comment", new_movie_comment_path(@movie), class: "btn btn-default pull-right") %>
     <% else %>
       <label class="label label-warning"> 未收藏电影 </label>
       <%= link_to("Favorite", favorite_movie_path(@movie), class: "btn btn-default", method: :post) %>
@@ -42,5 +42,5 @@
   <div class="text-center">
     <%= will_paginate @comments %>
   </div>
-  
+
 </div>
