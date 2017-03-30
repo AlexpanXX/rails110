@@ -1,0 +1,19 @@
+<div class="col-md-12">
+
+  <%= link_to("New Movie", new_movie_path, class: "btn btn-primary pull-right") %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Creator</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "movie_item", collection: @movies, as: :movie %>
+    </tbody>
+  </table>
+</div>

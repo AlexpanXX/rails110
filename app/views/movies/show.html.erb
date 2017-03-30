@@ -1,0 +1,41 @@
+<div class="col-md-12">
+  <div class="group">
+    <%= link_to("New Comment", new_movie_comment_path(@movie), class: "btn btn-default pull-right") %>
+    <% if current_user %>
+      <% if @movie.user == current_user %>
+        <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-primary pull-right") %>
+      <% end %>
+      <span class="pull-right">
+      <% if current_user.is_follower_of?(@movie) %>
+        <%= link_to("Dislikes", dislikes_movie_path(@movie), class: "btn btn-default", method: :post) %>
+        <label class="label label-success"> 已收藏电影 </label>
+      <% else %>
+        <%= link_to("Favorite", favorite_movie_path(@movie), class: "btn btn-default", method: :post) %>
+        <label class="label label-warning"> 未收藏电影 </label>
+      <% end %>
+      </span>
+    <% end %>
+  </div>
+
+  <h2><%= @movie.title %></h2>
+  <p><%= render_movie_description(@movie) %></p>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>评论内容</th>
+        <th>发表者</th>
+        <th>发表时间</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @comments.each do |comment| %>
+        <tr>
+          <td><%= commnet.content %></td>
+          <td><%= commnet.movie %></td>
+          <td><%= commnet.created_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

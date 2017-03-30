@@ -7,7 +7,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @movie = Movie.fins(params[:id])
+    @movie = Movie.find(params[:id])
     @comments = @movie.comments
   end
 
@@ -21,7 +21,7 @@ class MoviesController < ApplicationController
 
     if @movie.save
       current_user.favorite!(@movie)
-      redirect_to moives_path
+      redirect_to movies_path
     else
       render :new
     end
