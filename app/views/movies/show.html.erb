@@ -1,19 +1,19 @@
 <div class="col-md-12">
   <div class="group">
-    <%= link_to("New Comment", new_movie_comment_path(@movie), class: "btn btn-default pull-right") %>
+    <span class="pull-right">
+    <% if current_user.is_follower_of?(@movie) %>
+      <label class="label label-success"> 已收藏电影 </label>
+      <%= link_to("Dislikes", dislikes_movie_path(@movie), class: "btn btn-default", method: :post) %>
+      <%= link_to("New Comment", new_movie_comment_path(@movie), class: "btn btn-default pull-right") %>
+    <% else %>
+      <label class="label label-warning"> 未收藏电影 </label>
+      <%= link_to("Favorite", favorite_movie_path(@movie), class: "btn btn-default", method: :post) %>
+    <% end %>
+    </span>
     <% if current_user %>
       <% if @movie.user == current_user %>
         <%= link_to("Edit", edit_movie_path(@movie), class: "btn btn-primary pull-right") %>
       <% end %>
-      <span class="pull-right">
-      <% if current_user.is_follower_of?(@movie) %>
-        <%= link_to("Dislikes", dislikes_movie_path(@movie), class: "btn btn-default", method: :post) %>
-        <label class="label label-success"> 已收藏电影 </label>
-      <% else %>
-        <%= link_to("Favorite", favorite_movie_path(@movie), class: "btn btn-default", method: :post) %>
-        <label class="label label-warning"> 未收藏电影 </label>
-      <% end %>
-      </span>
     <% end %>
   </div>
 
