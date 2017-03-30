@@ -8,7 +8,7 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.find(params[:id])
-    @comments = @movie.comments
+    @comments = @movie.comments.recent.paginate( page: params[:page], per_page: 5)
   end
 
   def new
